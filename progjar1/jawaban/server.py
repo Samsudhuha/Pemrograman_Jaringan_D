@@ -3,7 +3,9 @@ import socket
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # Bind the socket to the port
-server_address = ('127.0.0.1', 10000)
+server_address = ('192.168.122.243', 10000)
+# server_address = ('192.168.122.130', 10000)
+
 print(f"starting up on {server_address}")
 sock.bind(server_address)
 # Listen for incoming connections
@@ -15,7 +17,7 @@ while True:
     print(f"connection from {client_address}")
     # Receive the data in small chunks and retransmit it
     while True:
-        data = connection.recv(2048)
+        data = connection.recv(512)
         print(f"received {data}")
         if data:
             print("sending back data")
